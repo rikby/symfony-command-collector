@@ -47,7 +47,7 @@ $collector->setPaths([__DIR__.'/../vendor/*/*/bin'])
     ->setCompiledFile(__DIR__.'/.build-super.php')
     ->captureCommands();
 
-// here .build-super.php must generated even it's empty
+// here .build-super.php must be generated even it's empty
 require_once __DIR__.'/.build-super.php';
 
 $app->run();

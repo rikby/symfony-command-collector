@@ -1,0 +1,17 @@
+{
+  "name": "rikby/symfony-command-collector",
+  "license": "GPL-2.0",
+  "type": "library",
+  "description": "Small script for extending symfony command for collecting subcommands.",
+  "require": {
+    "nikic/php-parser": "^0.9.5@stable"
+  },
+  "require-dev": {
+    "symfony/console": "^3.0@stable"
+  },
+  "autoload": {
+    "psr-4": {
+      "Rikby\\SymfonyCommandCollector\\": "src"
+    }
+  }
+}

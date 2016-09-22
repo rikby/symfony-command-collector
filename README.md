@@ -3,7 +3,7 @@
 ## Installation
 Just run in your project:
 ```
-composer require rikby/symfony-command-collector
+composer require rikby/symfony-command-collector ^0.1@stable
 ```
 
 ## First steps

@@ -38,9 +38,10 @@ use Symfony\Component\Console\Application as App;
 use Rikby\SymfonyConsole\CommandCollector\Collector;
 
 $app = new App('Super shell console.', '0.1.0');
+$app->add(new SubOneCommand());
+$app->add(new SubTwoCommand());
 
-$commandName = 'super';
-
+//collect other commands
 $collector = new Collector();
 $collector->setPaths([__DIR__.'/../vendor/*/*/bin'])
     ->setName('super')

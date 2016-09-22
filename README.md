@@ -1,5 +1,11 @@
 # Symfony console commands collector
 
+## Installation
+Just run in your project:
+```
+composer require rikby/symfony-command-collector
+```
+
 ## First steps
 
 There is a code which could help you to merge sub-commands from different places.

@@ -12,6 +12,26 @@ namespace Rikby\SymfonyConsole\CommandCollector;
  */
 trait CollectorTrait
 {
+    /**#@+
+     * Compile type
+     *
+     * @var string
+     */
+    static protected $compileTypeInclude = 'include';
+    static protected $compileTypeCode = 'code';
+    /**#@-*/
+
+    /**
+     * Compile type
+     *
+     * If type 'code' - all code will be merged into a compiled file
+     * If type 'include' - it will include these files
+     *
+     * @todo Implement "include" type using
+     * @var string
+     */
+    protected $compileType = 'code';
+
     /**
      * Input command name
      *
@@ -44,12 +64,15 @@ trait CollectorTrait
      * Capture commands code
      *
      * @return string
+     * @throws Exception
      */
     public function captureCommandsCode()
     {
-        $this->validateName();
-
-        return $this->mergeCode($this->searchCommandFiles());
+        if ($this->compileType === self::$compileTypeCode) {
+            return $this->mergeCode($this->searchCommandFiles());
+        } else {
+            throw new Exception('Unknown compile type '.$this->compileType);
+        }
     }
 
     /**
@@ -88,12 +111,13 @@ trait CollectorTrait
     public function setName($name)
     {
         $this->inputCommandName = $name;
+        $this->validateName();
 
         return $this;
     }
 
     /**
-     * Set paths to command file
+     * Set absolute paths to command file
      *
      * Path can be /path/{@*}to/{@*}/bin
      *
@@ -114,7 +138,7 @@ trait CollectorTrait
      *
      * @return string   Path to compiled file
      */
-    protected function forceCaptureCommands()
+    public function forceCaptureCommands()
     {
         $this->compileAndWrite();
 
